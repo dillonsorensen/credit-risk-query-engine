@@ -994,7 +994,7 @@ if st.button("Run query", type="primary") and question.strip():
         st.warning(res["narrative"])
     else:
         st.subheader("Answer")
-        st.write(res["narrative"])
+        st.markdown(res["narrative"].replace("$", r"\$"))   # escape $ so Streamlit does not render $...$ as LaTeX math
         if res["figure"] is not None:
             st.pyplot(res["figure"])
         st.subheader("Raw data")
